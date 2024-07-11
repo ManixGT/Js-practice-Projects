@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  justify-content: center;
+  padding-top: 30%;
+}
+.container {
+  height: 50vh;
+  width: 100vh;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid black;
+}
+h2 {
+  color: red;
+}
