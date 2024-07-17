@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "ans1": "Berlin",
+    "ans2": "Madrid",
+    "ans3": "Paris",
+    "ans4": "Lisbon",
+    "correctAns": "Paris"
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "ans1": "Earth",
+    "ans2": "Mars",
+    "ans3": "Jupiter",
+    "ans4": "Saturn",
+    "correctAns": "Mars"
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "ans1": "Atlantic Ocean",
+    "ans2": "Indian Ocean",
+    "ans3": "Arctic Ocean",
+    "ans4": "Pacific Ocean",
+    "correctAns": "Pacific Ocean"
+  },
+  {
+    "question": "Who wrote 'Hamlet'?",
+    "ans1": "Charles Dickens",
+    "ans2": "Jane Austen",
+    "ans3": "William Shakespeare",
+    "ans4": "Mark Twain",
+    "correctAns": "William Shakespeare"
+  },
+  {
+    "question": "What is the square root of 64?",
+    "ans1": "6",
+    "ans2": "7",
+    "ans3": "8",
+    "ans4": "9",
+    "correctAns": "8"
+  }
+]
