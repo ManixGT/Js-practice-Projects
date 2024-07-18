@@ -1,8 +1,10 @@
-fetch("./demoData.json")
+let data;
+
+const response = fetch("./demoData.json");
+response
   .then((res) => {
-    if (!res.ok) {
-      throw new Error("Error 101");
-    }
     return res.json();
   })
-  .catch();
+  .then((res) => {
+    console.log(data);
+  });
