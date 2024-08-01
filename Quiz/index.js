@@ -1,10 +1,12 @@
-let data;
+async function fetchData() {
+  const response = await fetch("./demoData.json");
+  const data = await response.json();
+  console.log(data); // Data ko dekhne aur use karne ke liye
+  processData(data); // Data ko kisi function ko bhejna
+}
 
-const response = fetch("./demoData.json");
-response
-  .then((res) => {
-    return res.json();
-  })
-  .then((res) => {
-    console.log(data);
-  });
+function processData(fetchedData) {
+  console.log("Data:", fetchedData);
+}
+
+fetchData();
