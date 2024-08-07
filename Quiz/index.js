@@ -1,12 +1,12 @@
-async function fetchData() {
-  const response = await fetch("./demoData.json");
-  const data = await response.json();
-  console.log(data); // Data ko dekhne aur use karne ke liye
-  processData(data); // Data ko kisi function ko bhejna
+function fetchJSONData() {
+  fetch("./demoData.json")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Unable to fetch data:", error));
 }
-
-function processData(fetchedData) {
-  console.log("Data:", fetchedData);
-}
-
-fetchData();
+fetchJSONData();
