@@ -9,28 +9,28 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h2 id="quiz-question">Quiz Time</h2>
+        <h2 class="quiz-question">Quiz Time</h2>
         <div class="quiz-options">
             <ul>
                 <li>
-                    <input type="checkbox"/>
-                    <label>Java</label>
+                    <input class="answer" type="radio" name="quiz-options"/>
+                    <label for="option-a" class="text_option_a">Java</label>
                 </li>
                 <li>
-                    <input type="checkbox"/>
-                    <label>Java</label>
+                    <input type="radio" class="answer"/>
+                    <label for="option-b" class="text_option_b">Java</label>
                 </li>
                 <li>
-                    <input type="checkbox"/>
-                    <label>Java</label>
+                    <input type="radio" class="answer" />
+                    <label for="option-c" class="text_option_c">Java</label>
                 </li>
                 <li>
-                    <input type="checkbox"/>
-                    <label>Java</label>
+                    <input type="radio" class="answer"/>
+                    <label for="option-d" class="text_option_d">Java</label>
                 </li>
             </ul>
         </div>
-        <button>Submit</button>
+        <button id="submit">Submit</button>
     </div>
 </body>
 <script src="quiz-app.js"></script>
