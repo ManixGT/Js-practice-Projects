@@ -1,0 +1,40 @@
+.todo_Frame {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.todo_Addition {
+  display: flex;
+  gap: 10px;
+}
+
+#todoInput {
+  flex: 1;
+  padding: 8px;
+}
+
+#Add {
+  padding: 8px 16px;
+}
+
+.todo_List_Output {
+  margin-top: 20px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.delete-item {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
