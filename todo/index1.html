@@ -5,17 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./index1.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/lucide.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
   </head>
-  <body>
-    <div class="cell1 flex justify-center py-40">
-      <div class="addition border-2 border-black">
-        <input type="text" placeholder="input" />
-        
+  <body class="bg-orange-400">
+    <div class="cell1 flex gap-10 justify-center py-40">
+      <div
+        class="todo-addition flex bg-white border-2 border-slate-400 rounded-md p-2"
+      >
+        <input
+          type="text"
+          placeholder="input"
+          value=""
+          class="input-field border-0 font-mono focus:outline-none flex-grow"
+        />
+        <button
+          class="input-btn bg-red-500 p-2 rounded-3xl cursor-pointer"
+          type="submit"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-badge-plus"
+          >
+            <path
+              d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+            />
+            <line x1="12" x2="12" y1="8" y2="16" />
+            <line x1="8" x2="16" y1="12" y2="12" />
+          </svg>
+        </button>
       </div>
-      <div class="state-dropdown px-5">DropDown</div>
+      <div class="relative w-48">
+        <!-- Dropdown Button -->
+        <div
+          class="state-dropdown flex justify-between items-center px-2 w-full bg-white border-2 border-slate-400 rounded-md p-2 cursor-pointer"
+        >
+          <div class="drp-element"></div>
+          <span class="dropdown-btn">
+            <svg
+              class="bg-red-500 m-2 cursor-pointer rounded-xl"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-big-down-dash"
+            >
+              <path d="M15 5H9" />
+              <path d="M15 9v3h4l-7 7-7-7h4V9z" />
+            </svg>
+          </span>
+        </div>
+      </div>
     </div>
+    <!-- This is todo-list -->
+    <div id="todoList-input"></div>
 
-    <div class="todo-list"></div>
+    <script src="./index1.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>
