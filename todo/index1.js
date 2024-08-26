@@ -2,7 +2,8 @@ const dropdownbtn = document.querySelector(".dropdown-btn");
 const elements = document.querySelector(".drp-element");
 const inputField = document.querySelector(".input-field"); //*Input Field
 const inputAddBtn = document.querySelector(".input-btn"); //*InputAddBtn
-const todoList = document.querySelector("#todoList-input");
+const todoList = document.querySelector("#todoList-input"); //* todoList input
+
 const cardCompletionState = ["All", "Completed", "Remaining"];
 let toDoArr = [];
 let dropdownToggle = false;
@@ -15,12 +16,11 @@ const dropdownElements = (dropdownToggle) => {
   if (dropdownToggle) {
     elements.innerHTML = "";
     cardCompletionState.forEach((data) => {
-      console.log(dropdownToggle, "4");
       const button = document.createElement("button");
       button.className = "block px-4 py-2 text-gray-800 hover:bg-gray-200";
       button.innerHTML = data;
       button.addEventListener("click", () => {
-        return (elements.innerHTML = data);
+        elements.innerHTML = data;
         dropdownToggle = false;
         dropdownElements(dropdownToggle);
       });
@@ -45,9 +45,9 @@ const todoListCreation = (toDoArr) => {
     listItem.className =
       "todo-list flex justify-between p-5 text-center w-3/6 m-auto bg-white border-b-2 border-slate-500";
     listItem.innerHTML = `
-      <span>${data}</span>
+      <span class='actualData'>${data}</span>
       <div class="buttons flex space-x-2">
-        <button class="corret bg-red-600 p-1 rounded-md hover:bg-white border border-slate-700">
+        <button class="correct bg-red-600 p-1 rounded-md hover:bg-white border border-slate-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -106,3 +106,20 @@ const todoListCreation = (toDoArr) => {
     todoList.appendChild(listItem);
   });
 };
+
+// Event delegation for the correct button
+todoList.addEventListener("click", (event) => {
+  if (event.target.closest(".correct")) {
+    const component = event.target
+      .closest(".todo-list")
+      .querySelector(".actualData");
+    component.classList.toggle("line-through");
+  }
+});
+
+// Event delegation for the correct
+todoList.addEventListener('click', (event) => {
+  if (event.target.closest('.delete')) {
+    
+  }
+})
