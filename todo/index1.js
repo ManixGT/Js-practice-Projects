@@ -5,16 +5,18 @@ const inputAddBtn = document.querySelector(".input-btn"); //*InputAddBtn
 const todoList = document.querySelector("#todoList-input"); //* todoList input
 
 const cardCompletionState = ["All", "Completed", "Remaining"];
+
 let toDoArr = [];
 let dropdownToggle = false;
 
+//*Dropdown toggle feature only
 dropdownbtn.addEventListener("click", () => {
   dropdownElements(!dropdownToggle);
 });
 
 const dropdownElements = (dropdownToggle) => {
+  elements.innerHTML = "";
   if (dropdownToggle) {
-    elements.innerHTML = "";
     cardCompletionState.forEach((data) => {
       const button = document.createElement("button");
       button.className = "block px-4 py-2 text-gray-800 hover:bg-gray-200";
@@ -22,7 +24,8 @@ const dropdownElements = (dropdownToggle) => {
       button.addEventListener("click", () => {
         elements.innerHTML = data;
         dropdownToggle = false;
-        dropdownElements(dropdownToggle);
+        //! START FROM HERE
+        //* yahan pr filter bhi lagg sakta haii
       });
       elements.appendChild(button);
     });
@@ -31,9 +34,14 @@ const dropdownElements = (dropdownToggle) => {
   }
 };
 
+//* Input Button
 inputAddBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  toDoArr.push(inputField.value);
+  let input = inputField.value;
+  if (input.trim) {
+    //*Tranforming the data from only 'input'->{ text: inputField.value, status: "All" }
+    toDoArr.push({ text: inputField.value, status: "All" });
+  }
   todoListCreation(toDoArr);
   inputField.value = "";
 });
@@ -118,8 +126,14 @@ todoList.addEventListener("click", (event) => {
 });
 
 // Event delegation for the correct
-todoList.addEventListener('click', (event) => {
-  if (event.target.closest('.delete')) {
-    
+todoList.addEventListener("click", (event) => {
+  if (event.target.closest(".delete")) {
+    const component = event.target
+      .closest(".todo-list")
+      .querySelector(".actualData");
+    const afterDelArr = toDoArr.filter((data) => data !== component.innerText);
+    toDoArr = afterDelArr;
+    todoListCreation(toDoArr);
+    console.log(toDoArr, "toDoArr");
   }
-})
+});
