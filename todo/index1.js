@@ -7,6 +7,7 @@ const todoList = document.querySelector("#todoList-input"); //* todoList input
 const cardCompletionState = ["All", "Completed", "Remaining"];
 
 let toDoArr = [];
+let selectedFilter = "All";
 let dropdownToggle = false;
 
 //*Dropdown toggle feature only
@@ -25,7 +26,7 @@ const dropdownElements = (dropdownToggle) => {
         elements.innerHTML = data;
         dropdownToggle = false;
         //! START FROM HERE
-        //* yahan pr filter bhi lagg sakta haii
+        todoListFilter({ data });
       });
       elements.appendChild(button);
     });
@@ -46,14 +47,17 @@ inputAddBtn.addEventListener("click", (event) => {
   inputField.value = "";
 });
 
-const todoListCreation = (toDoArr) => {
+const todoListCreation = (params) => {
+  const { data } = params;
+  console.log(params);
+
   todoList.innerHTML = ""; // Clear existing items
-  toDoArr.forEach((data) => {
+  params.forEach((data) => {
     const listItem = document.createElement("div");
     listItem.className =
       "todo-list flex justify-between p-5 text-center w-3/6 m-auto bg-white border-b-2 border-slate-500";
     listItem.innerHTML = `
-      <span class='actualData'>${data}</span>
+      <span class='actualData'>${data.text}</span>
       <div class="buttons flex space-x-2">
         <button class="correct bg-red-600 p-1 rounded-md hover:bg-white border border-slate-700">
           <svg
@@ -115,25 +119,27 @@ const todoListCreation = (toDoArr) => {
   });
 };
 
+//filter
+const todoListFilter = (params) => {
+  const { data } = params;
+  let filteredArr = toDoArr.filter((item) => {
+    item.status === data;
+  });
+  todoListCreation(filteredArr);
+};
+
 // Event delegation for the correct button
 todoList.addEventListener("click", (event) => {
-  if (event.target.closest(".correct")) {
-    const component = event.target
-      .closest(".todo-list")
-      .querySelector(".actualData");
-    component.classList.toggle("line-through");
-  }
-});
+  const listItem = event.target.closest(".todo-list");
+  if (listItem) {
+    const itemText = listItem.querySelector(".actualData").innerText;
 
-// Event delegation for the correct
-todoList.addEventListener("click", (event) => {
-  if (event.target.closest(".delete")) {
-    const component = event.target
-      .closest(".todo-list")
-      .querySelector(".actualData");
-    const afterDelArr = toDoArr.filter((data) => data !== component.innerText);
-    toDoArr = afterDelArr;
-    todoListCreation(toDoArr);
-    console.log(toDoArr, "toDoArr");
+    if (event.target.closest(".correct")) {
+      listItem.querySelector(".actualData").classList.toggle("line-through");
+    } else if (event.target.closest(".delete")) {
+      toDoArr = toDoArr.filter((item) => item.text !== itemText);
+      todoListCreation(toDoArr);
+    }
+    // Add logic for edit functionality if needed
   }
 });
