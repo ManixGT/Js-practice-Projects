@@ -26,7 +26,7 @@ const dropdownElements = (dropdownToggle) => {
         elements.innerHTML = data;
         dropdownToggle = false;
         //! START FROM HERE
-        todoListFilter({ data });
+        todoListFilter({ data: selectedFilter });
       });
       elements.appendChild(button);
     });
@@ -122,9 +122,7 @@ const todoListCreation = (params) => {
 //filter
 const todoListFilter = (params) => {
   const { data } = params;
-  let filteredArr = toDoArr.filter((item) => {
-    item.status === data;
-  });
+  let filteredArr = toDoArr.filter((item) => item.status === data);
   todoListCreation(filteredArr);
 };
 
