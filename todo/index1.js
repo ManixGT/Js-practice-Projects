@@ -178,8 +178,7 @@ function initEventListeners() {
 
 // Dropdown Toggle
 function toggleDropdown() {
-  isDropdownVisible = !isDropdownVisible;
-  updateDropdownElements();
+  updateDropdownElements(!isDropdownVisible);
 }
 
 // Update Dropdown Elements
